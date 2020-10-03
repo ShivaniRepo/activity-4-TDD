@@ -14,6 +14,9 @@ public class PredictableDie
 
 	public PredictableDie(int[] is) 
 	{
+		if( is.length == 0 )
+			throw new RuntimeException();
+			
 		this.theRolls = is; //its not static so can be accessed using this
 		this.nextInt = 0;
 	}

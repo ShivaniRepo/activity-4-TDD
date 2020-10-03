@@ -3,6 +3,7 @@ package skunk.domain;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class TestPredictableDie 
@@ -32,5 +33,16 @@ class TestPredictableDie
 		
 		die.roll();
 		assertEquals( 1, die.getLastRoll() );
+	}
+	
+	@Test
+	void test_PD_wit_empty_initial_int_array()
+	{
+		Assertions.assertThrows(RuntimeException.class, () -> 
+		{
+			PredictableDie die = new PredictableDie( new int[] {});
+			die.roll();
+			assertEquals( 1, die.getLastRoll() );
+		});
 	}
 }
